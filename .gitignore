@@ -1,0 +1,10 @@
+.idea
++.DS_Store*
+.pytest_cache
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+*.rb
+.vscode
+CACHEDIR.TAG
