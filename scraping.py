@@ -4,6 +4,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 import pandas as pd
 
+
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 
 
@@ -149,22 +150,21 @@ try:
     # print(batting_df)
     batting_df['Batting Average'] = batting_df['Batting Average'].astype(float)
     batting_df['Year'] = pd.to_numeric(batting_df['Year'], errors='coerce')
-    batting_df.to_csv("batting_avg.csv", index=False)
+    batting_df.to_csv("batting_avg.csv")
     print("Data saved to batting_avg.csv")
     
     # Career Home Runs Records
     home_run_df = career_home_run(driver)
     # print(home_run_df)
     home_run_df['Career Home Runs'] = home_run_df['Career Home Runs'].astype(int)
-    home_run_df['Name'] = home_run_df['Name'].str.replace(" ", "", regex=False).str.strip()
-    home_run_df.to_csv("career_home_runs.csv", index=False)
+    home_run_df.to_csv("home_runs.csv")
     print("Data saved to career_home_runs.csv")
     
     # Career Strikeout Records for Pitchers
     strikeout_df = career_strikeout_for_pitchers(driver)
     # print(strikeout_df)
     strikeout_df['Career Strikeouts'] = pd.to_numeric(strikeout_df['Career Strikeouts'].str.replace(",", ""), errors='coerce')
-    strikeout_df.to_csv("career_strikeouts.csv", index=False)
+    strikeout_df.to_csv("career_strikeouts.csv")
     print("Data saved to career_strikeouts.csv")
     
 except Exception as e:
